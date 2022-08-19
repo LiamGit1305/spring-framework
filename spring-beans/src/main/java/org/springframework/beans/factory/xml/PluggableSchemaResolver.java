@@ -174,6 +174,10 @@ public class PluggableSchemaResolver implements EntityResolver {
 	}
 
 
+	/**
+	 * debug时  属性schemaMappings中已经有属性的值，原因：因为dubug输出时自动调用此类的toString方法，进行了赋值操作，故此属性有值
+	 * @return
+	 */
 	@Override
 	public String toString() {
 		return "EntityResolver using schema mappings " + getSchemaMappings();
