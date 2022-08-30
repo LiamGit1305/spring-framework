@@ -144,9 +144,10 @@ public class DefaultBeanDefinitionDocumentReader implements BeanDefinitionDocume
 				}
 			}
 		}
-
+		//SpringMvc扩展
 		preProcessXml(root);
 		parseBeanDefinitions(root, this.delegate);
+		//SpringMvc扩展
 		postProcessXml(root);
 
 		this.delegate = parent;
@@ -159,8 +160,8 @@ public class DefaultBeanDefinitionDocumentReader implements BeanDefinitionDocume
 		delegate.initDefaults(root, parentDelegate);
 		return delegate;
 	}
-
 	/**
+
 	 * Parse the elements at the root level in the document:
 	 * "import", "alias", "bean".
 	 * @param root the DOM root element of the document
@@ -169,7 +170,7 @@ public class DefaultBeanDefinitionDocumentReader implements BeanDefinitionDocume
 		if (delegate.isDefaultNamespace(root)) {
 			NodeList nl = root.getChildNodes();
 			for (int i = 0; i < nl.getLength(); i++) {
-				Node node = nl.item(i);
+				Node node = nl.item(i);// \n\n 换行符也算一个标签
 				if (node instanceof Element) {
 					Element ele = (Element) node;
 					//默认的命名空间:不需要引入，默认存在的标签
